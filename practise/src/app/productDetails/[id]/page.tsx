@@ -11,10 +11,8 @@ interface UserType {
   roll: string;
   img: string;
   prise: number;
-    qty?: number;
+  qty?: number;
 }
-
-
 
 type UserDetailsProps = {
   params: {
@@ -41,6 +39,7 @@ export default function UserDetails({ params }: UserDetailsProps) {
     router.push("/cart");
   };
 
+
   return (
     <div className="p-6">
       <h1 className="text-2xl mb-4">User Details</h1>
@@ -52,7 +51,10 @@ export default function UserDetails({ params }: UserDetailsProps) {
       <p className="text-lg">ID: {user.id}</p>
       <p>Price: {user.prise}</p>
 
-      <button onClick={handleAdd} className="bg-green-500 text-white p-2 rounded mt-4">
+      <button
+        onClick={handleAdd}
+        className="bg-green-500 text-white p-2 rounded mt-4 hover:bg-green-600 transition"
+      >
         Add to Cart
       </button>
     </div>

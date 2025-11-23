@@ -10,7 +10,7 @@ export default function CartPage() {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
 
-  const totalPrice = items.reduce((total, item) => total + item.prise, 0);
+  const totalPrice = items.reduce((total, item) => total + item.prise * item.qty, 0);
 
   return (
     <div className="p-6">
@@ -30,12 +30,13 @@ export default function CartPage() {
               width={150}
               height={150}
               className="rounded-lg"
+            
             />
             <div className="flex-1">
               <p className="text-lg font-bold">{item.name}</p>
               <p>Roll: {item.roll}</p>
-              <p>Price per unit: {(item.prise / item.qty).toFixed(2)}</p>
-              <p>Quantity: {item.qty}</p>
+           <p>Price per unit: ${item.prise.toFixed(2)}</p>
+<p>Quantity: {item.qty}</p>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -64,9 +65,10 @@ export default function CartPage() {
         ))}
       </div>
 
-      <div className="mt-6 text-xl font-bold">
-        <p>Total Price: {totalPrice.toFixed(2)}</p>
-      </div>
+ <div className="mt-6 text-xl font-bold">
+  <p>Total Price: ${totalPrice.toFixed(2)}</p>
+</div>
+
     </div>
   );
 }
